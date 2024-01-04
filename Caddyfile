@@ -16,12 +16,12 @@
     }
 
     # Proxy inverso para todas las solicitudes a /
-    reverse_proxy https://building-manager-mvp-web-production.up.railway.app
+    reverse_proxy https://building-manager-mvp-web-production.up.railway.app/
 
     # El bloque handle_path eliminará /api/ del path antes de hacer el proxy
     # Esto es necesario si las rutas de la API de tu backend no comienzan con /api/
     handle_path /api/* {
-        reverse_proxy https://02-building-manager-mvp-api-production.up.railway.app
+        reverse_proxy https://02-building-manager-mvp-api-production.up.railway.app/
     }
 
     # Si las rutas de la API de tu backend comienzan con /api/, deberías comentar el bloque handle_path anterior
