@@ -10,7 +10,7 @@
     }
 }
 
-:{$PORT} {
+:80 {
     log {
         format console
     }
