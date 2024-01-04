@@ -1,11 +1,7 @@
-# Utiliza la imagen oficial de Nginx
-FROM nginx:latest
+FROM caddy:2.7.4-alpine
 
-# Copia el archivo de configuración personalizado al directorio de configuración de Nginx
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY Caddyfile /etc/caddy/Caddyfile
 
-# Expon el puerto 80
-EXPOSE 80
+RUN caddy fmt --overwrite /etc/caddy/Caddyfile
 
-# Comando para iniciar Nginx en primer plano
-CMD ["nginx", "-g", "daemon off;"]
+CMD caddy run --config /etc/caddy/Caddyfile --adapter caddyfile 2>&1
